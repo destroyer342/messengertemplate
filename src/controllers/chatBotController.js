@@ -213,29 +213,22 @@ let callSendAPIWithTemplate = (sender_psid) => {
         "recipient": {
             "id": sender_psid
         },
-        "message": {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [
-                        {
-                            "title": "Want to build sth awesome?",
-                            "image_url": "https://www.nexmo.com/wp-content/uploads/2018/10/build-bot-messages-api-768x384.png",
-                            "subtitle": "Watch more videos on my youtube channel ^^",
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "https://mestemplate.herokuapp.com/?psid="+sender_psid,
-                                    "title": "Watch now",
-                                    "webview_height_ratio": "tall",
-                                   // "messenger_extensions": true,
-                                }
-                            ]
-                        }
-                    ]
-                }
+        "messaging_type": "RESPONSE",
+        "message":{
+          "text": "Pick a color:",
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"Red",
+              "payload":"<POSTBACK_PAYLOAD>",
+              "image_url":"http://example.com/img/red.png"
+            },{
+              "content_type":"text",
+              "title":"Green",
+              "payload":"<POSTBACK_PAYLOAD>",
+              "image_url":"http://example.com/img/green.png"
             }
+          ]
         }
     };
 
