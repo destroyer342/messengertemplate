@@ -102,7 +102,7 @@ function handleMessage(sender_psid, message) {
             const jsonprofile = callprofileapi();
             const tempp = JSON.stringify(jsonprofile);
             response = {
-                "text": `You sent the message: "${tempp}" ${sender_psid}!`
+                "text": `You sent the message: "${jsonprofile.first_name}" ${sender_psid}!`
             }
         }
         callSendAPI(sender_psid, response);
