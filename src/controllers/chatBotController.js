@@ -99,7 +99,7 @@ function handleMessage(sender_psid, message) {
         } else {
            // const jsonprofile = connecttoapi(url);
             response = {
-                "text": `You sent the message:  !`
+                "text": `You sent the message: ! !`
             }
         }
         callSendAPI(sender_psid, response);
