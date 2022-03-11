@@ -1,6 +1,5 @@
 require("dotenv").config();
 import request from "request";
-const axios = require('axios')
 
 let postWebhook = (req, res) =>{
     // Parse the request body from the POST
@@ -64,17 +63,6 @@ let getWebhook = (req, res) => {
         }
     }
 };
-function callApi(url){
-    axios.get(url)
-    .then((respond) => {
-
-      
-        return respond.data;
-    })
-    .catch((error) => {
-        return errorl
-    })
-}
 
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
@@ -92,10 +80,9 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-            const url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
-            const jsonprofile = callApi(url);
+
             response = {
-                "text": `You sent the messsage: "${message.text}" ${jsonprofile.first_name}!`
+                "text": `You sent the message: "${message.text}" ${sender_psid}!`
             }
         }
         callSendAPI(sender_psid, response);
