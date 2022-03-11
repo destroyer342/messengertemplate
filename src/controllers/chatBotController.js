@@ -68,13 +68,13 @@ function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
 
-    if( message && message.attachments && message.attachments[0].payload){
+    if( message && message.attachment && message.attachment[0].payload){
      //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
         callSendAPIWithTemplate(sender_psid);
         return;
     }else {
       let response = {
-            "text": `You sent the message: "${message.text}"!`
+            "text": `You sent the message: "${message.quick_replies}"!`
           }
         callSendAPI(sender_psid,response);
 
