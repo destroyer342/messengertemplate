@@ -82,7 +82,7 @@ function connecttoapi(url){
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
-    const url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=EAAtNtRdHIYIBAAB6AVnCfUQZB1VlLUg2zJTjzvcCZALQvDk8haQ4ZBsrfYMRjeyXG9IXvWZA5gsAK2aYaRNBoyg10zBtKw4D0Nrj5pS9QTYFQ8Hni53IfKoHwaKrPNzROFFxe6XdG3NXxEkmNrcSRwxUR7ZCYvZCRhyadts0aCeVSj9dLMYLaVNLLmaZADoOToKzprdZAaiJBgZDZD`;
+    const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=EAAtNtRdHIYIBAAB6AVnCfUQZB1VlLUg2zJTjzvcCZALQvDk8haQ4ZBsrfYMRjeyXG9IXvWZA5gsAK2aYaRNBoyg10zBtKw4D0Nrj5pS9QTYFQ8Hni53IfKoHwaKrPNzROFFxe6XdG3NXxEkmNrcSRwxUR7ZCYvZCRhyadts0aCeVSj9dLMYLaVNLLmaZADoOToKzprdZAaiJBgZDZD`;
     
     if (message && message.attachments && message.attachments[0].payload) {
         //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
@@ -99,7 +99,7 @@ function handleMessage(sender_psid, message) {
         } else {
             const jsonprofile = connecttoapi(url);
             response = {
-                "text": `You sent the message: "${message.text}" ${jsonprofile.first_name}!`
+                "text": `You sent the message:  ${jsonprofile.first_name}!`
             }
         }
         callSendAPI(sender_psid, response);
