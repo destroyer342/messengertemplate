@@ -1,25 +1,35 @@
-# messenger-bot-nodejs
-- A simple Facebook Messenger Chatbot using Mesenger Platform (Node.js)
-- Test this bot (this project) now : https://my-chatbot-haryphamdev.herokuapp.com/
-- Guide to set up this project: https://www.youtube.com/watch?v=h-JqLlNTfrc
-- Full tutorial: https://www.youtube.com/watch?v=h-JqLlNTfrc&list=PLNOjHC_BXrfB8DcOCHtKPWPMl4t9PG5cI&index=2&t=0s
+Create new folder
+Git init
+git clone https://github.com/destroyer342/messengertemplate
+Create a page
+Go to https://developers.facebook.com/apps/
+-	Create app
+-	Go to Messenger then click setup
+-	Connect your newly create page
+-	Copy Generate token
+ Paste your {Generated token} in  .ENV files
+Enter any string to MY_VERIFY_FB_TOKEN  and  set a PORT
+Go to github.com
+Create a repository
+Upload your code to this repository
+Go to heroku.com , create app then click github connect. Connect to your github repository
+Go to settings then enter the 4 config var
+	NODE_ENV=development
+PORT=8000
+MY_VERIFY_FB_TOKEN=randomstringlang1
+FB_PAGE_TOKEN=
+Click deploy Branch
+Go to developerFacebook again then click add callback URL
+Callback URL= url of your website or heroku site(https://mestemplate.herokuapp.com/webhook)
+Verify token= MY_VERIFY_FB_TOKEN
+add subscriptions
+Messages, messaging_postbacks, message_deliveries,standby, message_reactions, message_reads,message_echoes, messaging_handovers
 
-## How to run this project ? 
+Try your site then click setup ( to activate persistent menu )
 
-You can set up this project by following these steps below or an easier way, I created a video to set up this project ( Watch my video: https://www.youtube.com/watch?v=h-JqLlNTfrc )
-### 1. Clone this project
-- Copy file .env.example -> create a .env file at the root folder -> fill all app variables in the .evn file
-- Run the "npm install" to test project at the localhost
 
-### 2. Create a Heroku app, a Facebook Page, a Facebook App.
-#### 2.1 Create a Heroku app
-- Deploy app to Heroku ( need to setup dev dependencies:
-heroku config:set NPM_CONFIG_PRODUCTION=false
-)
-- Config env variables (setup dev dependencies)
-#### 2.2 Facebook Page
-- Create a Facebook Page
-- Config Whitelisted Domains (add the Heroku app domain)
-#### 2.3 Facebook App
-- Create a Facebook App
-- Config webhook
+
+
+
+
+
