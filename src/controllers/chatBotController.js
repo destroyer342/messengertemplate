@@ -72,7 +72,7 @@ let callprofileapi = (req,res) =>{
         axios.get(url)
             .then((respond) => {
     
-              
+              res.send(respond.data)
                return respond.data
             })
             .catch((error) => {
