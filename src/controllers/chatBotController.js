@@ -226,7 +226,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
                             "buttons": [
                                 {
                                     "type": "web_url",
-                                    "url": "https://bit.ly/subscribe-haryphamdev",
+                                    "url": "https://www.coverage.ph/",
                                     "title": "Watch now",
                                     "webview_height_ratio": "compact"
                                 }
