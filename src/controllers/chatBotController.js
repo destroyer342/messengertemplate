@@ -214,7 +214,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
             "id": sender_psid
         },
         "messaging_type": "RESPONSE",
-        "payload":{
+        "messaging":{
           "text": "Pick a color:",
           "quick_replies":[
             {
@@ -225,7 +225,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
             },{
               "content_type":"text",
               "title":"Green",
-              "payload":"yes",
+              "payload":"no",
               "image_url":"https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png"
             }
           ]
