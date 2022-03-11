@@ -22,12 +22,21 @@ Click deploy Branch
 Go to developerFacebook again then click add callback URL
 Callback URL= url of your website or heroku site(https://mestemplate.herokuapp.com/webhook)
 Verify token= MY_VERIFY_FB_TOKEN
-add subscriptions
+Edit page subscriptions
 Messages, messaging_postbacks, message_deliveries,standby, message_reactions, message_reads,message_echoes, messaging_handovers
 
 Try your site then click setup ( to activate persistent menu )
 
 
+NEED TO WHITELIST YOUR WEBSITE
+Go to facebook page
+Click Settings at the top of your Page
+Click Advance Messaging on the left
+Edit whitelisted domains for your page in the Whitelisted Domains section
+And to your code
+       "whitelisted_domains": [
+            "https://coverage.ph/", //link to your Heroku app
+        ]
 
 
 
