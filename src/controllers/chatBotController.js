@@ -67,7 +67,7 @@ let getWebhook = (req, res) => {
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
-    const jsons = JSON.stringify()(message);
+    const jsons = JSON.stringify(message);
     if( message && message.attachments && message.attachments[0].payload){
      //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
         callSendAPIWithTemplate(sender_psid);
