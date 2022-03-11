@@ -74,7 +74,7 @@ function handleMessage(sender_psid, message) {
         return;
     }else {
       let response = {
-            "text": `You sent the message: "${message.quick_replies.image_url}"!`
+            "text": `You sent the message: "${message.text}"!`
           }
         callSendAPI(sender_psid,response);
 
