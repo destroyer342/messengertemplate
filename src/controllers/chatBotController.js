@@ -228,8 +228,12 @@ let callSendAPIWithTemplate = (sender_psid) => {
               "payload":"no",
               "image_url":"https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png"
             }
+            
           ]
-        }
+        },
+        "mid": "m_AG5Hz2Uq7tuwNEhXfYYKj8mJEM_QPpz5jdCK48PnKAjSdjfipqxqMvK8ma6AC8fplwlqLP_5cgXIbu7I3rBN0P",
+            "text": "Green"
+        
     };
 
     request({
