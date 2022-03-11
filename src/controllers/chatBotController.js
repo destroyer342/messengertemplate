@@ -66,7 +66,7 @@ let getWebhook = (req, res) => {
 
 
 let callprofileapi = (req,res) =>{
-    const url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+    const url = `https://graph.facebook.com/${postWebhook.sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
     const axios = require('axios')
 
         axios.get(url)
