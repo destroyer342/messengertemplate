@@ -67,7 +67,6 @@ let getWebhook = (req, res) => {
 
 let callprofileapi = (req,res) =>{
     const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
-    const messenger_id = "4916919225875asd08"
     const axios = require('axios')
 
         axios.get(url)
