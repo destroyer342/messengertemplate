@@ -97,7 +97,7 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-            const jsonprofile = connecttoapi(url);
+           // const jsonprofile = connecttoapi(url);
             response = {
                 "text": `You sent the message:  !`
             }
