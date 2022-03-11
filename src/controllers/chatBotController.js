@@ -73,9 +73,9 @@ function handleMessage(sender_psid, message) {
         callSendAPIWithTemplate(sender_psid);
         return;
     }else {
-        const jsons = JSON.stringify(message);
+        
       let response = {
-            "text": `You sent the message: "${jsons.text}"!`
+            "text": `You sent the message: "${message.quick_reply.payload}"!`
           }
         callSendAPI(sender_psid,response);
 
