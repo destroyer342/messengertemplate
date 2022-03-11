@@ -1,5 +1,6 @@
 require("dotenv").config();
 import request from "request";
+const axios = require('axios')
 
 let postWebhook = (req, res) =>{
     // Parse the request body from the POST
@@ -64,7 +65,7 @@ let getWebhook = (req, res) => {
     }
 };
 function callApi(url){
-    request(url)
+    axios.get(url)
     .then((respond) => {
 
       
