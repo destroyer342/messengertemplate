@@ -229,7 +229,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
                                     "url": "https://mestemplate.herokuapp.com/?psid="+sender_psid,
                                     "title": "Watch now",
                                     "webview_height_ratio": "tall",
-                                   // "messenger_extensions": true
+                                    "messenger_extensions": true,
                                 }
                             ]
                         }
