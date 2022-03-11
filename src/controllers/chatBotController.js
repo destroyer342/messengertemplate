@@ -1,6 +1,5 @@
 require("dotenv").config();
 import request from "request";
-//const axios = require('axios')
 
 let postWebhook = (req, res) =>{
     // Parse the request body from the POST
@@ -65,25 +64,11 @@ let getWebhook = (req, res) => {
     }
 };
 
-function connecttoapi(url){
-   
-    request(url)
-    .then((respond) => {
-
-      
-        return respond.data;
-    })
-    .catch((error) => {
-        return error;
-    })
-
-}
 
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
-    const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=EAAtNtRdHIYIBAAB6AVnCfUQZB1VlLUg2zJTjzvcCZALQvDk8haQ4ZBsrfYMRjeyXG9IXvWZA5gsAK2aYaRNBoyg10zBtKw4D0Nrj5pS9QTYFQ8Hni53IfKoHwaKrPNzROFFxe6XdG3NXxEkmNrcSRwxUR7ZCYvZCRhyadts0aCeVSj9dLMYLaVNLLmaZADoOToKzprdZAaiJBgZDZD`;
-    
+
     if (message && message.attachments && message.attachments[0].payload) {
         //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
         callSendAPIWithTemplate(sender_psid);
@@ -92,14 +77,13 @@ function handleMessage(sender_psid, message) {
 
         let response;
         if (message.quick_reply) {
-          
             response = {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-           // const jsonprofile = connecttoapi(url);
+
             response = {
-                "text": `You sent the message: ! !`
+                "text": `You sent the message: "${message.text}" ${sender_psid}!`
             }
         }
         callSendAPI(sender_psid, response);
