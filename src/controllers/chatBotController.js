@@ -65,22 +65,22 @@ let getWebhook = (req, res) => {
 };
 
 
-let callprofileapi = (req,res) =>{
-    const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+// let callprofileapi = (req,res) =>{
+//     const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
     
-    const axios = require('axios')
+//     const axios = require('axios')
 
-        axios.get(url)
-            .then((respond) => {
+//         axios.get(url)
+//             .then((respond) => {
     
               
-                console.log(respond.data)
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+//                 console.log(respond.data)
+//             })
+//             .catch((error) => {
+//                 console.error(error)
+//             })
 
-}
+// }
 
 
 function handleMessage(sender_psid, message) {
@@ -280,6 +280,6 @@ module.exports = {
   postWebhook: postWebhook,
   getWebhook: getWebhook,
   persistentmenu: persistentmenu,
-  callprofileapi:callprofileapi
+  //callprofileapi:callprofileapi
 
 };
