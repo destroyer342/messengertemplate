@@ -228,7 +228,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
                                     "type": "web_url",
                                     "url": "https://bit.ly/subscribe-haryphamdev",
                                     "title": "Watch now",
-                                    "webview_height_ratio": "tall"
+                                    "webview_height_ratio": "compact"
                                 }
                             ]
                         }
