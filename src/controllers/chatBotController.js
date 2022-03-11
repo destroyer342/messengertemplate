@@ -220,13 +220,13 @@ let callSendAPIWithTemplate = (sender_psid) => {
             {
               "content_type":"text",
               "title":"Red",
-              "payload":"<POSTBACK_PAYLOAD>",
-              "image_url":"http://example.com/img/red.png"
+              "payload":"yes",
+             "image_url":"https://toppng.com/uploads/preview/red-circle-1155276042606ekqvli9k.png"
             },{
               "content_type":"text",
               "title":"Green",
-              "payload":"<POSTBACK_PAYLOAD>",
-              "image_url":"http://example.com/img/green.png"
+              "payload":"yes",
+              "image_url":"https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png"
             }
           ]
         }
