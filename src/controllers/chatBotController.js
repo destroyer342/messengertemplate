@@ -115,21 +115,27 @@ let persistentmenu = async (req, res) => {
                     {
                         "type": "web_url",
                         "title": "Shop now1",
-                        "url": "https://www.originalcoastclothing.com/",
-                        "webview_height_ratio": "full"
+                        "url": "https://www.coverage.ph/",
+                        "webview_height_ratio": "compact"
                     },
                
                     {
                         "type": "web_url",
                         "title": "Shop now2",
-                        "url": "https://www.originalcoastclothing.com/",
-                        "webview_height_ratio": "full"
+                        "url": "https://www.coverage.ph/",
+                        "webview_height_ratio": "tall"
                     },
                     {
                         "type": "web_url",
                         "title": "Shop now3",
-                        "url": "https://www.originalcoastclothing.com/",
+                        "url": "https://www.coverage.ph/",
                         "webview_height_ratio": "full"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "postback yes",
+                        "payload": "yes",
+              
                     }
                 ]
             }
@@ -164,54 +170,6 @@ let persistentmenu = async (req, res) => {
 }
 
 
-// Handles messages events
-// function handleMessage(sender_psid, received_message) {
-//     let response;
-//
-//     // Check if the message contains text
-//     if (received_message.text) {
-//
-//         // Create the payload for a basic text message
-//         response = {
-//             "text": `You sent the message: "${received_message.text}". Now send me an image!`
-//         }
-//     } else if (received_message.attachments) {
-//
-//     // Gets the URL of the message attachment
-//     let attachment_url = received_message.attachments[0].payload.url;
-//         response = {
-//             "attachment": {
-//                 "type": "template",
-//                 "payload": {
-//                     "template_type": "generic",
-//                     "elements": [{
-//                         "title": "Is this the right picture?",
-//                         "subtitle": "Tap a button to answer.",
-//                         "image_url": attachment_url,
-//                         "buttons": [
-//                             {
-//                                 "type": "postback",
-//                                 "title": "Yes!",
-//                                 "payload": "yes",
-//                             },
-//                             {
-//                                 "type": "postback",
-//                                 "title": "No!",
-//                                 "payload": "no",
-//                             }
-//                         ],
-//                     }]
-//                 }
-//             }
-//         }
-//
-// }
-//
-// // Sends the response message
-//     callSendAPI(sender_psid, response);
-// }
-
-// Handles messaging_postbacks events
 
 
 // Sends response messages via the Send API
