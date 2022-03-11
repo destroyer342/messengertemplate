@@ -74,7 +74,7 @@ function connecttoapi(url){
         return respond.data;
     })
     .catch((error) => {
-        console.error(error)
+        return error;
     })
 
 }
