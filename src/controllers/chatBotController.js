@@ -69,15 +69,16 @@ function handleMessage(sender_psid, message) {
     // id like button: sticker_id 369239263222822
     const jsons = JSON.stringify(message);
     if( message && message.attachments && message.attachments[0].payload){
-        let response1 = {
+     //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
+        // callSendAPIWithTemplate(sender_psid);
+        // return;
+        let response = {
             "text": `You sent the message: "${jsons}"!`
           }
-        callSendAPI(sender_psid,response1);
-        callSendAPIWithTemplate(sender_psid);
-        return;
+        callSendAPI(sender_psid,response);
     }else {
       let response = {
-            "text": `You sent the message: "${message.quick_reply.payload}"!`
+            "text": `You sent the message: "${jsons}"!`
           }
         callSendAPI(sender_psid,response);
 
