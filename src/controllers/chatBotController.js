@@ -64,6 +64,25 @@ let getWebhook = (req, res) => {
     }
 };
 
+
+let callprofileapi = (req,res) =>{
+    const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+    const messenger_id = "4916919225875asd08"
+    const axios = require('axios')
+
+        axios.get(url)
+            .then((respond) => {
+    
+              
+               return respond.data
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+}
+
+
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
@@ -80,9 +99,10 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-
+            const jsonprofile = callprofileapi();
+            const tempp = JSON.stringify(jsonprofile);
             response = {
-                "text": `You sent the message: "${message.text}" ${sender_psid}!`
+                "text": `You sent the message: "${tempp}" ${sender_psid}!`
             }
         }
         callSendAPI(sender_psid, response);
@@ -260,6 +280,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
 module.exports = {
   postWebhook: postWebhook,
   getWebhook: getWebhook,
-  persistentmenu: persistentmenu
+  persistentmenu: persistentmenu,
+  callprofileapi:callprofileapi
 
 };

@@ -10,6 +10,7 @@ let initWebRoutes = (app)=> {
     router.post("/webhook", chatBotController.postWebhook);
     router.post("/setup", chatBotController.persistentmenu);
     router.get("/close",homepageController.closebrowser)
+    router.get("/callapi",chatBotController.callprofileapi)
 
     return app.use("/", router);
 };
