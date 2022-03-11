@@ -90,7 +90,10 @@ function handlePostback(sender_psid, received_postback) {
 
     // Set the response based on the postback payload
     if (payload === 'yes') {
-        response = "Thanks"
+        response = {
+            "text": `You click the getstarted button!`
+          }
+      
     } else if (payload === 'no') {
         response = { "text": "Oops, try sending another image." }
     }
