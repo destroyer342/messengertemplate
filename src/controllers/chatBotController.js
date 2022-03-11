@@ -209,7 +209,7 @@ function callSendAPI(sender_psid, response) {
 let callSendAPIWithTemplate = (sender_psid) => {
     // document fb message template
     // https://developers.facebook.com/docs/messenger-platform/send-messages/templates
-    let body = {
+    let request_body = {
         "recipient": {
             "id": sender_psid
         },
@@ -243,7 +243,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
         "uri": "https://graph.facebook.com/v13.0/me/messages",
         "qs": { "access_token": process.env.FB_PAGE_TOKEN },
         "method": "POST",
-        "json": body
+        "json": request_body
     }, (err, res, body) => {
         if (!err) {
             // console.log('message sent!')
