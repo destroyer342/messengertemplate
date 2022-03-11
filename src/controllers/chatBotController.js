@@ -144,8 +144,8 @@ let persistentmenu = async (req, res) => {
             }
         ],
         "whitelisted_domains": [
-            "https://coverage.ph/", //link to your Heroku app
-            "https://mestemplate.herokuapp.com/",
+            "https://www.coverage.ph/", //link to your Heroku app
+            "https://www.mestemplate.herokuapp.com/",
         ]
     };
  
