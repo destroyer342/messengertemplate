@@ -67,17 +67,24 @@ let getWebhook = (req, res) => {
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
-
+    let response;
     if( message && message.attachments && message.attachments[0].payload){
         callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
         callSendAPIWithTemplate(sender_psid);
         return;
-    }else {
-      let response = {
+    }else{
+        if(message.quick_reply.payload){
+            response = {
+                "text": `This message from quickreply: "${message.text}"!`
+              }
+        
+        }else{
+       response = {
             "text": `You sent the message: "${message.text}"!`
           }
-        callSendAPI(sender_psid,response);
-
+    
+    }
+    callSendAPI(sender_psid,response);
     }
 
 }
@@ -213,7 +220,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
         "recipient": {
             "id": sender_psid
         },
-     //   "messaging_type": "RESPONSE",
+        "messaging_type": "RESPONSE",
         "message":{
           "text": "Pick a color:",
           "quick_replies":[
