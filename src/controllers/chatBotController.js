@@ -74,7 +74,7 @@ function handleMessage(sender_psid, message) {
         return;
     }else {
       let response = {
-            "text": `You sent the message: "${message.text}" ${message.quick_replies.payload} ${message.quick_replies}!`
+            "text": `You sent the message: "${message.text}"!`
           }
         callSendAPI(sender_psid,response);
 
@@ -230,9 +230,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
             }
             
           ]
-        },
-        "mid": "m_AG5Hz2Uq7tuwNEhXfYYKj8mJEM_QPpz5jdCK48PnKAjSdjfipqxqMvK8ma6AC8fplwlqLP_5cgXIbu7I3rBN0P",
-            "text": "Green"
+        }
         
     };
 
