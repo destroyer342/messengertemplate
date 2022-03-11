@@ -72,9 +72,9 @@ function handleMessage(sender_psid, message) {
         callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
         callSendAPIWithTemplate(sender_psid);
         return;
-    }else{
+    }else {
       let response = {
-            "text": `You sent the message: "${message.quick_reply.payload}"!`
+            "text": `You sent the message: "${message.text}"!`
           }
         callSendAPI(sender_psid,response);
 
