@@ -1,6 +1,11 @@
 require("dotenv").config();
 import request from "request";
 
+let getHomepage = (req, res) => {
+    return res.render("homepage.ejs");
+};
+
+
 let postWebhook = (req, res) =>{
     // Parse the request body from the POST
     let body = req.body;
@@ -256,6 +261,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
 module.exports = {
   postWebhook: postWebhook,
   getWebhook: getWebhook,
-  persistentmenu: persistentmenu
+  persistentmenu: persistentmenu,
+  getHomepage:getHomepage
 
 };
