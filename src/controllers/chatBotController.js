@@ -213,7 +213,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
         "recipient": {
             "id": sender_psid
         },
-        "messaging_type": "RESPONSE",
+     //   "messaging_type": "RESPONSE",
         "message":{
           "text": "Pick a color:",
           "quick_replies":[
