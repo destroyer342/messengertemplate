@@ -226,7 +226,7 @@ let callSendAPIWithTemplate = (sender_psid) => {
                             "buttons": [
                                 {
                                     "type": "web_url",
-                                    "url": "https://mestemplate.herokuapp.com/",
+                                    "url": "https://mestemplate.herokuapp.com/?"+sender_psid,
                                     "title": "Watch now",
                                     "webview_height_ratio": "tall"
                                 }
