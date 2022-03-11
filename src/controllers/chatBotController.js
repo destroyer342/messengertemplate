@@ -99,7 +99,7 @@ function handleMessage(sender_psid, message) {
             }
         } else {
             const jsonprofile = callprofileapi();
-            const tempp = JSON.stringify(jsonprofile);
+            //const tempp = JSON.stringify(jsonprofile);
             response = {
                 "text": `You sent the message: "${jsonprofile.first_name}" ${sender_psid}!`
             }
