@@ -66,14 +66,15 @@ let getWebhook = (req, res) => {
 
 
 let callprofileapi = (req,res) =>{
-    const url = `https://graph.facebook.com/${postWebhook.sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+    const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+    const messenger_id = "4916919225875asd08"
     const axios = require('axios')
 
         axios.get(url)
             .then((respond) => {
     
-              res.send(respond.data)
-               return respond.data
+              
+                console.log(respond.data)
             })
             .catch((error) => {
                 console.error(error)
@@ -98,10 +99,9 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-            const jsonprofile = callprofileapi();
-            //const tempp = JSON.stringify(jsonprofile);
+            
             response = {
-                "text": `You sent the message: "${jsonprofile.first_name}" ${sender_psid}!`
+                "text": `You sent the message: "${message.text}" ${sender_psid}!`
             }
         }
         callSendAPI(sender_psid, response);
