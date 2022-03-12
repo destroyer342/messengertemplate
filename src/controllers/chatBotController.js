@@ -142,14 +142,13 @@ function handleMessage(sender_psid, message) {
                 response1 = {
                     "text": `this is the word ->: "${message.text}" !`
                 }
-                callSendAPI(sender_psid, response1);
-                break;
+               
 
             default:
                 response1 = {
                     "text": `You sent the message: "${message.text}" !`
                 }
-                callSendAPI(sender_psid, response1);
+               
         }
 
 
