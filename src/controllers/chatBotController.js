@@ -101,22 +101,23 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-           let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+            try {
+                let url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
+                const response = await axios.get(url)
+                let user = response.data
+                //var responseText = `Hi there ${user.first_name}, How can i help you today?`
+                // Send Your response
+                response = {
+                    "text": `You sent the message: "${user.id}" !`
+                }
+            } catch (error) {
+                response = {
+                    "text": `You sent the message: "${message.text}" ${error}!`
+               }
+            }
 
-            axios.get(url)
-                .then((respond) => {
 
-                  const user = respond.data;
 
-                    response = {
-                        "text": `You sent the message: "${user.first_name}" !`
-                    }
-                })
-                 .catch((error) => {
-                    response = {
-                         "text": `You sent the message: "${message.text}" ${error}!`
-                    }
-                })
 
 
         }
