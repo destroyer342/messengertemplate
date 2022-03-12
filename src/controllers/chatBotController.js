@@ -95,7 +95,7 @@ function handleMessage(sender_psid, message) {
         return;
     } else {
 
-        let response;
+        let response1;
         if (message.quick_reply) {
             response1 = {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
