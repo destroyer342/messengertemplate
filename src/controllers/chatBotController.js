@@ -102,15 +102,13 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-
-
             request({
                 "uri": url,
                 "method": "GET",
             }, (err, res, body) => {
                 if (!err) {
                     //convert string to json object
-                    body = JSON.parse(body);
+                   // body = JSON.parse(body);
                     let username = `${body.last_name} ${body.first_name}`;
                     response1 = {
                                 "text": `You sent the message: "${username}" !`
