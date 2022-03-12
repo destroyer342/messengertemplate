@@ -138,19 +138,19 @@ function handleMessage(sender_psid, message) {
             //         callSendAPIWithTemplate(sender_psid);
             //         break;
             //     default:
-            switch(message.text){
-                case names: 
-                response1 = {
-                    "text": `this is the word ->: "${message.text}" !`
-                }
-        
+            switch (message.text) {
+                case names:
+                    response1 = {
+                        "text": `this is the word ->: "${message.text}" !`
+                    }
+                    break;
                 default:
                     response1 = {
                         "text": `You sent the message: "${message.text}" !`
                     }
             }
-                   
-            
+
+
 
         }
         callSendAPI(sender_psid, response1);
