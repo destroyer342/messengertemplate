@@ -143,7 +143,7 @@ function handleMessage(sender_psid, message) {
                 response1 = {
                     "text": `this is the word ->: "${message.text}" !`
                 }
-        }
+        
                 default:
                     response1 = {
                         "text": `You sent the message: "${message.text}" !`
