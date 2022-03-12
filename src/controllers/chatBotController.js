@@ -103,8 +103,8 @@ function handleMessage(sender_psid, message) {
         } else {
             try {
                 let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
-                const response = request(url)
-                let user = response.data;
+                const response1 = await axios.get(url)
+                let user = response1.data;
                 var responseText = `Hi there ${user.first_name}, How can i help you today?`
                 response = {
                     "text": `You sent the message: "${message.text}" ${responseText}!`
