@@ -123,7 +123,7 @@ function handleMessage(sender_psid, message) {
                         body = JSON.parse(body);
                         let username = `${body.first_name} ${body.last_name}`;
                         response1 = {
-                            "text": `This is your name: "${username}"! right ?`
+                            "text": `This is your name: "${body}"! right ?`
                         }
                         callSendAPI(sender_psid, response1);
                     } else {
