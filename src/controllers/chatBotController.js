@@ -103,6 +103,7 @@ function handleMessage(sender_psid, message) {
             "text": `your payload quickreply is : "${message.quick_reply.payload}"!`
         }
     } else {
+        message = message.toLowerCase()
         switch(message.text){
             case "names":    //user profile
                 request({
