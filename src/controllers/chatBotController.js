@@ -90,7 +90,7 @@ let callprofileapi = (req, res) => {
             let username = `${body.last_name} ${body.first_name}`;
             res.send(username)
         } else {
-          
+
         }
     })
 
@@ -100,57 +100,49 @@ let callprofileapi = (req, res) => {
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
-
+    let response1;
+    let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
 
     if (message && message.attachments && message.attachments[0].payload) {
         //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
         callSendAPIWithTemplate(sender_psid);
         return;
     } else {
-
-        let response1;
-        let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
         if (message.quick_reply) {
             response1 = {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-            request({
-                "uri": url,
-                "method": "GET",
-            }, (err, res, body) => {
-                if (!err) {
-                    //convert string to json object
-                    body = JSON.parse(body);
-                    let username = `${body.last_name} ${body.first_name}`;
-                    response1 = {
-                                "text": `You sent the message: "${username}" !`
+            switch(message.text){
+                case names:
+                    request({
+                        "uri": url,
+                        "method": "GET",
+                    }, (err, res, body) => {
+                        if (!err) {
+                            //convert string to json object
+                            body = JSON.parse(body);
+                            let username = `${body.last_name} ${body.first_name}`;
+                            response1 = {
+                                "text": `This is your name: "${username}" !`
                             }
                             callSendAPI(sender_psid, response1);
-                } else {
+                        } else {
+                            response1 = {
+                                "text": `error`
+                            }
+                        }
+                    })
+                    break;
+                case quickreply:
+                    callSendAPIWithTemplate(sender_psid);
+                    break;
+                default:
                     response1 = {
-                        "text": `error`
+                        "text": `You sent the message: "${message.text}" !`
                     }
-                }
-            })
-            // axios.get(url)
-            // .then(response => {
-            //     let user = JSON.parse(response.data);
-            //     //var responseText = `Hi there ${user.first_name}, How can i help you today?`
-            //     // Send Your response
-            //     response1 = {
-            //         "text": `You sent the message: "${user.id}" !`
-            //     }
-            // })
-            // .catch(error => {
-            //     response1 = {
-            //         "text": `You sent the message: "${message.text}" ${error}!`
-            //    }
-            // });
+            }
 
-            //     response1 = {
-            //         "text": `You sent the message: "${message.text}"!`
-            //    }
         }
         callSendAPI(sender_psid, response1);
 

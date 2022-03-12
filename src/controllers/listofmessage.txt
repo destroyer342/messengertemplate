@@ -1,0 +1,22 @@
+pag tawag ng profile names -->
+ let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+    request({
+                "uri": url,
+                "method": "GET",
+            }, (err, res, body) => {
+                if (!err) {
+                    //convert string to json object
+                    body = JSON.parse(body);
+                    let username = `${body.last_name} ${body.first_name}`;
+                    response1 = {
+                                "text": `You sent the message: "${username}" !`
+                            }
+                            callSendAPI(sender_psid, response1);
+                } else {
+                    response1 = {
+                        "text": `error`
+                    }
+                    callSendAPI(sender_psid, response1);
+                }
+            })
+
