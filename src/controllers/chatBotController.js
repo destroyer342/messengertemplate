@@ -102,6 +102,7 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
+            try{
            
             axios.get(url)
             .then(response => {
@@ -117,6 +118,12 @@ function handleMessage(sender_psid, message) {
                     "text": `You sent the message: "${message.text}" ${error}!`
                }
             });
+        }catch(error){
+            response1 = {
+                "text": `You sent the message: "${message.text}" ${error}!`
+           }
+
+        }
         //     response1 = {
         //         "text": `You sent the message: "${message.text}"!`
         //    }
