@@ -2,7 +2,7 @@ require("dotenv").config();
 import axios from "axios";
 import request from "request";
 
-let postWebhook = (req, res) =>{
+let postWebhook = (req, res) => {
     // Parse the request body from the POST
     let body = req.body;
 
@@ -10,7 +10,7 @@ let postWebhook = (req, res) =>{
     if (body.object === 'page') {
 
         // Iterate over each entry - there may be multiple if batched
-        body.entry.forEach(function(entry) {
+        body.entry.forEach(function (entry) {
 
             // Gets the body of the webhook event
             let webhook_event = entry.messaging[0];
@@ -19,7 +19,7 @@ let postWebhook = (req, res) =>{
             // Get the sender PSID
             let sender_psid = webhook_event.sender.id;
             console.log('Sender PSID: ' + sender_psid);
-    
+
             // Check if the event is a message or postback and
             // pass the event to the appropriate handler function
             if (webhook_event.message) {
@@ -68,13 +68,13 @@ let getWebhook = (req, res) => {
 
 // let callprofileapi = (req,res) =>{
 //     const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
-    
+
 //     const axios = require('axios')
 
 //         axios.get(url)
 //             .then((respond) => {
-    
-              
+
+
 //                 console.log(respond.data)
 //             })
 //             .catch((error) => {
@@ -87,7 +87,7 @@ let getWebhook = (req, res) => {
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
-    
+
 
     if (message && message.attachments && message.attachments[0].payload) {
         //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
@@ -101,22 +101,24 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-            try {
-                let url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
-                const response1 = request(url)
-                let user = response1.data;
-             //   var responseText = `Hi there ${user.first_name}, How can i help you today?`
-                response = {
-                    "text": `You sent the message: "${message.text}" ${user.first_name}!`
-                }
-                // Send Your response
-            } catch (error) {
-                response = {
-                    "text": `You sent the message: "${message.text}" ${error}!`
-                }
-            }
-            
-           
+            let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
+
+            axios.get(url)
+                .then((respond) => {
+
+                    let user = respond.data;
+
+                    response = {
+                        "text": `You sent the message: "${message.text}" ${user.first_name}!`
+                    }
+                })
+                .catch((error) => {
+                    response = {
+                        "text": `You sent the message: "${message.text}" ${error}!`
+                    }
+                })
+
+
         }
         callSendAPI(sender_psid, response);
 
@@ -134,20 +136,20 @@ function handlePostback(sender_psid, received_postback) {
     if (payload === 'yes') {
         response = {
             "text": `You click the getstarted button!`
-          }
-      
+        }
+
     } else if (payload === 'no') {
         response = { "text": "Oops, try sending another image." }
     }
     // Send the message to acknowledge the postback
     callSendAPI(sender_psid, response);
-    
+
 }
 
 
 let persistentmenu = async (req, res) => {
     // Construct the message body
-   
+
     let request_body = {
         "get_started": {
             "payload": "yes"
@@ -163,7 +165,7 @@ let persistentmenu = async (req, res) => {
                         "url": "https://www.coverage.ph/",
                         "webview_height_ratio": "compact"
                     },
-               
+
                     {
                         "type": "web_url",
                         "title": "Shop now2",
@@ -180,7 +182,7 @@ let persistentmenu = async (req, res) => {
                         "type": "postback",
                         "title": "postback yes",
                         "payload": "yes",
-              
+
                     }
                 ]
             }
@@ -190,7 +192,7 @@ let persistentmenu = async (req, res) => {
             "https://www.mestemplate.herokuapp.com/",
         ]
     };
- 
+
     // Send the HTTP request to the Messenger Platform
     return new Promise((resolve, reject) => {
         try {
@@ -203,7 +205,7 @@ let persistentmenu = async (req, res) => {
                 console.log('-------------------------------------------------------')
                 console.log('Logs setup persistent menu & get started button: ', response.body)
                 console.log('-------------------------------------------------------')
-                if (!err) { 
+                if (!err) {
                     return res.send('Setup done!')
                 } else {
                     return res.send('Something wrongs with setup, please check logs...')
@@ -256,24 +258,24 @@ let callSendAPIWithTemplate = (sender_psid) => {
             "id": sender_psid
         },
         "messaging_type": "RESPONSE",
-        "message":{
-          "text": "Pick a color:",
-          "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"Red",
-              "payload":"yes",
-             "image_url":"https://toppng.com/uploads/preview/red-circle-1155276042606ekqvli9k.png"
-            },{
-              "content_type":"text",
-              "title":"Green",
-              "payload":"no",
-              "image_url":"https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png"
-            }
-            
-          ]
+        "message": {
+            "text": "Pick a color:",
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Red",
+                    "payload": "yes",
+                    "image_url": "https://toppng.com/uploads/preview/red-circle-1155276042606ekqvli9k.png"
+                }, {
+                    "content_type": "text",
+                    "title": "Green",
+                    "payload": "no",
+                    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png"
+                }
+
+            ]
         }
-        
+
     };
 
     request({
@@ -291,9 +293,9 @@ let callSendAPIWithTemplate = (sender_psid) => {
 };
 
 module.exports = {
-  postWebhook: postWebhook,
-  getWebhook: getWebhook,
-  persistentmenu: persistentmenu,
-  callprofileapi:callprofileapi
+    postWebhook: postWebhook,
+    getWebhook: getWebhook,
+    persistentmenu: persistentmenu,
+    callprofileapi: callprofileapi
 
 };
