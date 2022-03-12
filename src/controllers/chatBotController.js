@@ -113,31 +113,31 @@ function handleMessage(sender_psid, message) {
                 "text": `your payload quickreply is : "${message.quick_reply.payload}"!`
             }
         } else {
-            switch(message.text){
-                case names:
-                    request({
-                        "uri": url,
-                        "method": "GET",
-                    }, (err, res, body) => {
-                        if (!err) {
-                            //convert string to json object
-                            body = JSON.parse(body);
-                            let username = `${body.last_name} ${body.first_name}`;
-                            response1 = {
-                                "text": `This is your name: "${username}" !`
-                            }
-                            callSendAPI(sender_psid, response1);
-                        } else {
-                            response1 = {
-                                "text": `error`
-                            }
-                        }
-                    })
-                    break;
-                case quickreply:
-                    callSendAPIWithTemplate(sender_psid);
-                    break;
-                default:
+            // switch(message.text){
+            //     case names:
+            //         request({
+            //             "uri": url,
+            //             "method": "GET",
+            //         }, (err, res, body) => {
+            //             if (!err) {
+            //                 //convert string to json object
+            //                 body = JSON.parse(body);
+            //                 let username = `${body.last_name} ${body.first_name}`;
+            //                 response1 = {
+            //                     "text": `This is your name: "${username}" !`
+            //                 }
+            //                 callSendAPI(sender_psid, response1);
+            //             } else {
+            //                 response1 = {
+            //                     "text": `error`
+            //                 }
+            //             }
+            //         })
+            //         break;
+            //     case quickreply:
+            //         callSendAPIWithTemplate(sender_psid);
+            //         break;
+            //     default:
                     response1 = {
                         "text": `You sent the message: "${message.text}" !`
                     }
