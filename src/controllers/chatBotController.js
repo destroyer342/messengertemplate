@@ -104,24 +104,24 @@ function handleMessage(sender_psid, message) {
         } else {
           
            
-            // axios.get(url)
-            // .then(response => {
-            //     var user = JSON.parse(response.data);
-            //     //var responseText = `Hi there ${user.first_name}, How can i help you today?`
-            //     // Send Your response
-            //     response1 = {
-            //         "text": `You sent the message: "${user.id}" !`
-            //     }
-            // })
-            // .catch(error => {
-            //     response1 = {
-            //         "text": `You sent the message: "${message.text}" ${error}!`
-            //    }
-            // });
+            axios.get(url)
+            .then(response => {
+                let user = JSON.parse(response.data);
+                //var responseText = `Hi there ${user.first_name}, How can i help you today?`
+                // Send Your response
+                response1 = {
+                    "text": `You sent the message: "${user.id}" !`
+                }
+            })
+            .catch(error => {
+                response1 = {
+                    "text": `You sent the message: "${message.text}" ${error}!`
+               }
+            });
        
-            response1 = {
-                "text": `You sent the message: "${message.text}"!`
-           }
+        //     response1 = {
+        //         "text": `You sent the message: "${message.text}"!`
+        //    }
         }
         callSendAPI(sender_psid, response1);
 
