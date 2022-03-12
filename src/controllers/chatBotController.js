@@ -71,15 +71,28 @@ let callprofileapi = (req, res) => {
 
 
 
-    axios.get(url)
-        .then((respond) => {
+    // axios.get(url)
+    //     .then((respond) => {
 
 
-            res.send(respond.data)
-        })
-        .catch((error) => {
-            console.error(error)
-        })
+    //         res.send(respond.data)
+    //     })
+    //     .catch((error) => {
+    //         console.error(error)
+    //     })
+    request({
+        "uri": url,
+        "method": "GET",
+    }, (err, ress, body) => {
+        if (!err) {
+            //convert string to json object
+            body = JSON.parse(body);
+            let username = `${body.last_name} ${body.first_name}`;
+            res.send(username)
+        } else {
+          
+        }
+    })
 
 }
 
@@ -113,6 +126,7 @@ function handleMessage(sender_psid, message) {
                     response1 = {
                                 "text": `You sent the message: "${username}" !`
                             }
+                            callSendAPI(sender_psid, response1);
                 } else {
                     response1 = {
                         "text": `error`
