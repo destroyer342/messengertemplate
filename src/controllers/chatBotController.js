@@ -96,7 +96,7 @@ function handleMessage(sender_psid, message) {
     } else {
 
         let response1;
-        const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+        let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
         if (message.quick_reply) {
             response1 = {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
@@ -104,20 +104,20 @@ function handleMessage(sender_psid, message) {
         } else {
           
            
-            axios.get(url)
-            .then(response => {
-                var user = JSON.parse(response.data);
-                //var responseText = `Hi there ${user.first_name}, How can i help you today?`
-                // Send Your response
-                response1 = {
-                    "text": `You sent the message: "${user.id}" !`
-                }
-            })
-            .catch(error => {
-                response1 = {
-                    "text": `You sent the message: "${message.text}" ${error}!`
-               }
-            });
+            // axios.get(url)
+            // .then(response => {
+            //     var user = JSON.parse(response.data);
+            //     //var responseText = `Hi there ${user.first_name}, How can i help you today?`
+            //     // Send Your response
+            //     response1 = {
+            //         "text": `You sent the message: "${user.id}" !`
+            //     }
+            // })
+            // .catch(error => {
+            //     response1 = {
+            //         "text": `You sent the message: "${message.text}" ${error}!`
+            //    }
+            // });
        
         //     response1 = {
         //         "text": `You sent the message: "${message.text}"!`
