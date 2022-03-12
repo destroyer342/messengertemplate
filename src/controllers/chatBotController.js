@@ -75,7 +75,7 @@ let callprofileapi = (req,res) =>{
             .then((respond) => {
 
 
-              res.render(respond.data)
+              res.send(respond.data)
             })
             .catch((error) => {
                 console.error(error)
@@ -101,22 +101,22 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-         //   let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
+           let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
 
-          //   axios.get(url)
-           //     .then((respond) => {
+            axios.get(url)
+                .then((respond) => {
 
-            //         const user = respond.data;
+                  const user = respond.data;
 
                     response = {
-                        "text": `You sent the message: "${message.text}" !`
+                        "text": `You sent the message: "${user.first_name}" !`
                     }
-          //       })
-          //       .catch((error) => {
-            //         response = {
-             //            "text": `You sent the message: "${message.text}" ${error}!`
-             //        }
-           //      })
+                })
+                 .catch((error) => {
+                    response = {
+                         "text": `You sent the message: "${message.text}" ${error}!`
+                    }
+                })
 
 
         }
