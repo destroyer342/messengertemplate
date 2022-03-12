@@ -101,10 +101,10 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-            let url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
+            let url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
             axios.get(url)
             .then(response => {
-                let user = response.data
+                let user = response.data;
                 //var responseText = `Hi there ${user.first_name}, How can i help you today?`
                 // Send Your response
                 response1 = {
