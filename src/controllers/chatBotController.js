@@ -97,31 +97,27 @@ function handleMessage(sender_psid, message) {
 
         let response;
         if (message.quick_reply) {
-            response = {
+            response1 = {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-            try {
-                let url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
-                const response = await axios.get(url)
+            let url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
+            axios.get(url)
+            .then(response => {
                 let user = response.data
                 //var responseText = `Hi there ${user.first_name}, How can i help you today?`
                 // Send Your response
-                response = {
+                response1 = {
                     "text": `You sent the message: "${user.id}" !`
                 }
-            } catch (error) {
-                response = {
+            })
+            .catch(error => {
+                response1 = {
                     "text": `You sent the message: "${message.text}" ${error}!`
                }
-            }
-
-
-
-
-
+            });
         }
-        callSendAPI(sender_psid, response);
+        callSendAPI(sender_psid, response1);
 
     }
 
