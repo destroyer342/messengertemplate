@@ -120,7 +120,7 @@ function handleMessage(sender_psid, message) {
             });
         }catch(error){
             response1 = {
-                "text": `You sent the message: "${message.text}" ${error}!`
+                "text": `You sent the message: "${message.text}" !`
            }
 
         }
