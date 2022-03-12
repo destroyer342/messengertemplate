@@ -133,7 +133,7 @@ function handleMessage(sender_psid, message) {
                     }
                 })
                 break;
-            case quickreply:
+            case "quickreply":
                 callQuickReply(sender_psid);
                 break; 
 
