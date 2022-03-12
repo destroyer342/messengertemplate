@@ -138,7 +138,7 @@ function handleMessage(sender_psid, message) {
         //         break;
         //     default:
         switch (message.text) {
-            case names:
+            case "names":
                 response1 = {
                     "text": `this is the word ->: "${message.text}" !`
                 }
