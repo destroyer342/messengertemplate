@@ -115,7 +115,7 @@ function handleMessage(sender_psid, message) {
                             }
                 } else {
                     response1 = {
-                        "text": `You sent the message: "${message.text}" ${err}!`
+                        "text": `error`
                     }
                 }
             })
