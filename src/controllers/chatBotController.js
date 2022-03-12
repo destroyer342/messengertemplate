@@ -107,7 +107,7 @@ function handleMessage(sender_psid, message) {
                 let user = response.data;
                 var responseText = `Hi there ${user.first_name}, How can i help you today?`
                 response = {
-                    "text": `You sent the message: "${message.text}" ${responseText.first_name}!`
+                    "text": `You sent the message: "${message.text}" ${responseText}!`
                 }
                 // Send Your response
             } catch (error) {
