@@ -96,7 +96,8 @@ function handleMessage(sender_psid, message) {
 
     if (message && message.attachments && message.attachments[0].payload) {
         //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
-        callSendAPIWithTemplate(sender_psid);
+        //pag picture or gif ang pinasa
+        callQuickReply(sender_psid);
         return;
     } else if (message.quick_reply) {
         response1 = {
