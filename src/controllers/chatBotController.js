@@ -112,54 +112,36 @@ function handleMessage(sender_psid, message) {
             "text": `your payload quickreply is : "${message.quick_reply.payload}"!`
         }
     } else {
-        switch (message.text) {
+        switch(message.text){
             case "names":
-                // request({
-                //     "uri": url,
-                //     "method": "GET",
-                // }, (err, res, body) => {
-                //     if (!err) {
-                //         //convert string to json object
-                //         body = JSON.parse(body);
-                //         let username = `${body.first_name} ${body.last_name}`;
-                //         response1 = {
-                //             "text": `This is your name: "${username}" !`
-                //         }
-                //         callSendAPI(sender_psid, response1);
-                //     } else {
-                //         response1 = {
-                //             "text": `error`
-                //         }
-                //     }
-                // })
-                axios.get(url)
-                    .then((respond) => {
-
-                        const user = respond.data;
-                        const body = JSON.parse(user);
+                request({
+                    "uri": url,
+                    "method": "GET",
+                }, (err, res, body) => {
+                    if (!err) {
+                        //convert string to json object
+                        body = JSON.parse(body);
                         let username = `${body.first_name} ${body.last_name}`;
-                                response1 = {
-                                    "text": `This is your name: "${username}" !`
-                                }
-                                callSendAPI(sender_psid, response1);
-                    })
-                    .catch((error) => {
-                        response = {
-                            "text": `You sent the message: "${message.text}" ${error}!`
+                        response1 = {
+                            "text": `This is your name: "${username}" !`
                         }
                         callSendAPI(sender_psid, response1);
-                    })
-
+                    } else {
+                        response1 = {
+                            "text": `error`
+                        }
+                    }
+                })
                 break;
             case "quickreply":
                 callQuickReply(sender_psid);
-                break;
+                break; 
 
             default:
                 response1 = {
                     "text": `You sent the message: "${message.text}" !`
                 }
-
+               
         }
 
 
