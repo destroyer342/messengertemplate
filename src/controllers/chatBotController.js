@@ -101,7 +101,7 @@ function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
     let response1;
-    let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+    let url = `https://graph.facebook.com/${sender_psid}?access_token=${process.env.FB_PAGE_TOKEN}`;
 
     if (message && message.attachments && message.attachments[0].payload) {
         //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
