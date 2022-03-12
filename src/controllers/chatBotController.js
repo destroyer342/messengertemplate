@@ -116,14 +116,13 @@ function handleMessage(sender_psid, message) {
                         response1 = {
                             "text": `This is your name: "${username}"! right ?`
                         }
-                        
+                        callSendAPI(sender_psid, response1);
                     } else {
                         response1 = {
                             "text": `error`
                         }
                     }
                 })
-                callSendAPI(sender_psid, response1);
                 break;
             case "quickreply":   // quick reply
                 callQuickReply(sender_psid);
