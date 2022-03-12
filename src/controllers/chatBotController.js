@@ -112,37 +112,30 @@ function handleMessage(sender_psid, message) {
             "text": `your payload quickreply is : "${message.quick_reply.payload}"!`
         }
     } else {
-        // switch(message.text){
-        //     case names:
-        //         request({
-        //             "uri": url,
-        //             "method": "GET",
-        //         }, (err, res, body) => {
-        //             if (!err) {
-        //                 //convert string to json object
-        //                 body = JSON.parse(body);
-        //                 let username = `${body.last_name} ${body.first_name}`;
-        //                 response1 = {
-        //                     "text": `This is your name: "${username}" !`
-        //                 }
-        //                 callSendAPI(sender_psid, response1);
-        //             } else {
-        //                 response1 = {
-        //                     "text": `error`
-        //                 }
-        //             }
-        //         })
-        //         break;
-        //     case quickreply:
-        //         callSendAPIWithTemplate(sender_psid);
-        //         break;
-        //     default:
-        switch (message.text) {
+        switch(message.text){
             case "names":
-                response1 = {
-                    "text": `this is the word ->: "${message.text}" !`
-                }
-               break
+                request({
+                    "uri": url,
+                    "method": "GET",
+                }, (err, res, body) => {
+                    if (!err) {
+                        //convert string to json object
+                        body = JSON.parse(body);
+                        let username = `${body.last_name} ${body.first_name}`;
+                        response1 = {
+                            "text": `This is your name: "${username}" !`
+                        }
+                        callSendAPI(sender_psid, response1);
+                    } else {
+                        response1 = {
+                            "text": `error`
+                        }
+                    }
+                })
+                break;
+            case quickreply:
+                callQuickReply(sender_psid);
+                break; 
 
             default:
                 response1 = {
@@ -284,7 +277,7 @@ function callSendAPI(sender_psid, response) {
 
 
 
-let callSendAPIWithTemplate = (sender_psid) => {
+let callQuickReply = (sender_psid) => {
     // document fb message template
     // https://developers.facebook.com/docs/messenger-platform/send-messages/templates
     let request_body = {
