@@ -75,7 +75,7 @@ let callprofileapi = (req,res) =>{
             .then((respond) => {
 
 
-                console.log(respond.data)
+              res.send(respond.data)
             })
             .catch((error) => {
                 console.error(error)
