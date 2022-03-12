@@ -66,20 +66,20 @@ let getWebhook = (req, res) => {
 };
 
 
-let callprofileapi = (req,res) =>{
+let callprofileapi = (req, res) => {
     const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
 
- 
-
-        axios.get(url)
-            .then((respond) => {
 
 
-              res.send(respond.data)
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+    axios.get(url)
+        .then((respond) => {
+
+
+            res.send(respond.data)
+        })
+        .catch((error) => {
+            console.error(error)
+        })
 
 }
 
@@ -102,26 +102,43 @@ function handleMessage(sender_psid, message) {
                 "text": `You sent the message: "${message.quick_reply.payload}"!`
             }
         } else {
-          
-           
-            axios.get(url)
-            .then(response => {
-                let user = JSON.parse(response.data);
-                //var responseText = `Hi there ${user.first_name}, How can i help you today?`
-                // Send Your response
-                response1 = {
-                    "text": `You sent the message: "${user.id}" !`
+
+
+            request({
+                "uri": url,
+                "method": "GET",
+            }, (err, res, body) => {
+                if (!err) {
+                    //convert string to json object
+                    body = JSON.parse(body);
+                    let username = `${body.last_name} ${body.first_name}`;
+                    response1 = {
+                                "text": `You sent the message: "${username}" !`
+                            }
+                } else {
+                    response1 = {
+                        "text": `You sent the message: "${message.text}" ${err}!`
+                    }
                 }
             })
-            .catch(error => {
-                response1 = {
-                    "text": `You sent the message: "${message.text}" ${error}!`
-               }
-            });
-       
-        //     response1 = {
-        //         "text": `You sent the message: "${message.text}"!`
-        //    }
+            // axios.get(url)
+            // .then(response => {
+            //     let user = JSON.parse(response.data);
+            //     //var responseText = `Hi there ${user.first_name}, How can i help you today?`
+            //     // Send Your response
+            //     response1 = {
+            //         "text": `You sent the message: "${user.id}" !`
+            //     }
+            // })
+            // .catch(error => {
+            //     response1 = {
+            //         "text": `You sent the message: "${message.text}" ${error}!`
+            //    }
+            // });
+
+            //     response1 = {
+            //         "text": `You sent the message: "${message.text}"!`
+            //    }
         }
         callSendAPI(sender_psid, response1);
 
