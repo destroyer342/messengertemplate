@@ -108,7 +108,7 @@ function handleMessage(sender_psid, message) {
             }, (err, res, body) => {
                 if (!err) {
                     //convert string to json object
-                   // body = JSON.parse(body);
+                    body = JSON.parse(body);
                     let username = `${body.last_name} ${body.first_name}`;
                     response1 = {
                                 "text": `You sent the message: "${username}" !`
