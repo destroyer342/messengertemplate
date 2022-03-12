@@ -104,7 +104,7 @@ function handleMessage(sender_psid, message) {
         }
     } else {
         message = message.text.toLowerCase()
-        switch(message.text){
+        switch(message){
             case "names":    //user profile
                 request({
                     "uri": url,
