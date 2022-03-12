@@ -105,9 +105,9 @@ function handleMessage(sender_psid, message) {
                 let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
                 const response1 = axios.get(url)
                 let user = response1.data;
-                var responseText = `Hi there ${user.first_name}, How can i help you today?`
+             //   var responseText = `Hi there ${user.first_name}, How can i help you today?`
                 response = {
-                    "text": `You sent the message: "${message.text}" ${responseText}!`
+                    "text": `You sent the message: "${message.text}" ${user.first_name}!`
                 }
                 // Send Your response
             } catch (error) {
