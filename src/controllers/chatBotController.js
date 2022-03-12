@@ -107,12 +107,11 @@ function handleMessage(sender_psid, message) {
         //   callSendAPI(sender_psid, "Thank you for watching my video !!!" +sender_psid);
         callSendAPIWithTemplate(sender_psid);
         return;
-    } else {
-        if (message.quick_reply) {
+    } else if (message.quick_reply){
             response1 = {
                 "text": `your payload quickreply is : "${message.quick_reply.payload}"!`
             }
-        } else {
+    } else {
             // switch(message.text){
             //     case names:
             //         request({
@@ -138,20 +137,20 @@ function handleMessage(sender_psid, message) {
             //         callSendAPIWithTemplate(sender_psid);
             //         break;
             //     default:
-           // switch (message.text) {
-           //     case names:
-            //        response1 = {
-           //             "text": `this is the word ->: "${message.text}" !`
-           //         }
-             //       callSendAPI(sender_psid, response1);
-             //       break;
+            switch (message.text) {
+                case names:
+                    response1 = {
+                        "text": `this is the word ->: "${message.text}" !`
+                    }
+                    callSendAPI(sender_psid, response1);
+                    break;
                     
-          //      default:
+                default:
                     response1 = {
                         "text": `You sent the message: "${message.text}" !`
                     }
-       //             callSendAPI(sender_psid, response1);
-           // }
+                    callSendAPI(sender_psid, response1);
+            }
 
 
 
