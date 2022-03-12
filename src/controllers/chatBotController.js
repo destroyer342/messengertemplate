@@ -296,6 +296,6 @@ module.exports = {
     postWebhook: postWebhook,
     getWebhook: getWebhook,
     persistentmenu: persistentmenu,
-    callprofileapi: callprofileapi
+   // callprofileapi: callprofileapi
 
 };
