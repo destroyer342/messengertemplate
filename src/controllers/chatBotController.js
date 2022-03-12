@@ -1,4 +1,5 @@
 require("dotenv").config();
+import axios from "axios";
 import request from "request";
 
 let postWebhook = (req, res) =>{
@@ -18,11 +19,20 @@ let postWebhook = (req, res) =>{
             // Get the sender PSID
             let sender_psid = webhook_event.sender.id;
             console.log('Sender PSID: ' + sender_psid);
+            try {
+                let url = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`
+                const response = await axios.get(url)
+                let user = response.data
+                var responseText = `Hi there ${user.first_name}, How can i help you today?`
+                // Send Your response
+            } catch (error) {
+                console.log("caught", error);
+            }
     
             // Check if the event is a message or postback and
             // pass the event to the appropriate handler function
             if (webhook_event.message) {
-                handleMessage(sender_psid, webhook_event.message);
+                handleMessage(sender_psid, webhook_event.message,responseText);
             } else if (webhook_event.postback) {
                 handlePostback(sender_psid, webhook_event.postback);
             }
@@ -65,25 +75,25 @@ let getWebhook = (req, res) => {
 };
 
 
-let callprofileapi = (req,res) =>{
-    const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
+// let callprofileapi = (req,res) =>{
+//     const url = `https://graph.facebook.com/4696406413815673?fields=first_name,last_name,profile_pic&access_token=${process.env.FB_PAGE_TOKEN}`;
     
-    const axios = require('axios')
+//     const axios = require('axios')
 
-        axios.get(url)
-            .then((respond) => {
+//         axios.get(url)
+//             .then((respond) => {
     
               
-                console.log(respond.data)
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+//                 console.log(respond.data)
+//             })
+//             .catch((error) => {
+//                 console.error(error)
+//             })
 
-}
+// }
 
 
-function handleMessage(sender_psid, message) {
+function handleMessage(sender_psid, message,responseText) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
 
@@ -101,7 +111,7 @@ function handleMessage(sender_psid, message) {
         } else {
             
             response = {
-                "text": `You sent the message: "${message.text}" ${sender_psid}!`
+                "text": `You sent the message: "${message.text}" ${responseText}!`
             }
         }
         callSendAPI(sender_psid, response);
