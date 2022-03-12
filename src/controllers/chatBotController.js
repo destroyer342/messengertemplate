@@ -119,9 +119,9 @@ function handleMessage(sender_psid, message) {
             //    }
             // });
        
-        //     response1 = {
-        //         "text": `You sent the message: "${message.text}"!`
-        //    }
+            response1 = {
+                "text": `You sent the message: "${message.text}"!`
+           }
         }
         callSendAPI(sender_psid, response1);
 
