@@ -71,15 +71,6 @@ let callprofileapi = (req, res) => {
 
 
 
-    // axios.get(url)
-    //     .then((respond) => {
-
-
-    //         res.send(respond.data)
-    //     })
-    //     .catch((error) => {
-    //         console.error(error)
-    //     })
     request({
         "uri": url,
         "method": "GET",
@@ -113,7 +104,7 @@ function handleMessage(sender_psid, message) {
         }
     } else {
         switch(message.text){
-            case "names":
+            case "names":    //user profile
                 request({
                     "uri": url,
                     "method": "GET",
@@ -125,19 +116,20 @@ function handleMessage(sender_psid, message) {
                         response1 = {
                             "text": `This is your name: "${username}"! right ?`
                         }
-                        callSendAPI(sender_psid, response1);
+                        
                     } else {
                         response1 = {
                             "text": `error`
                         }
                     }
                 })
+                callSendAPI(sender_psid, response1);
                 break;
-            case "quickreply":
+            case "quickreply":   // quick reply
                 callQuickReply(sender_psid);
                 break; 
 
-            default:
+            default:            // default answer
                 response1 = {
                     "text": `You sent the message: "${message.text}" !`
                 }
