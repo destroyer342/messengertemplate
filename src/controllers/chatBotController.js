@@ -109,7 +109,7 @@ function handleMessage(sender_psid, message) {
             //         const user = respond.data;
 
                     response = {
-                        "text": `You sent the message: "${message.text}" ${user.id}!`
+                        "text": `You sent the message: "${message.text}" !`
                     }
           //       })
           //       .catch((error) => {
