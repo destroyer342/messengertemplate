@@ -110,7 +110,7 @@ function handleMessage(sender_psid, message) {
     } else {
         if (message.quick_reply) {
             response1 = {
-                "text": `You sent the message: "${message.quick_reply.payload}"!`
+                "text": `your payload quickreply is : "${message.quick_reply.payload}"!`
             }
         } else {
             switch(message.text){
