@@ -106,7 +106,7 @@ function handleMessage(sender_psid, message) {
             axios.get(url)
                 .then((respond) => {
 
-                    let user = respond.data;
+                    const user = respond.data;
 
                     response = {
                         "text": `You sent the message: "${message.text}" ${user.first_name}!`
