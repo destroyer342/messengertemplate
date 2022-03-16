@@ -179,37 +179,37 @@ let persistentmenu = async (req, res) => {
             {
                 "locale": "default",
                 "composer_input_disabled": false,
-                "call_to_actions": [
-                    {
-                        "type": "web_url",
-                        "title": "Shop now1",
-                        "url": "https://www.coverage.ph/",
-                        "webview_height_ratio": "compact"
-                    },
+                // "call_to_actions": [
+                //     {
+                //         "type": "web_url",
+                //         "title": "Shop now1",
+                //         "url": "https://www.coverage.ph/",
+                //         "webview_height_ratio": "compact"
+                //     },
 
-                    {
-                        "type": "web_url",
-                        "title": "Shop now2",
-                        "url": "https://www.coverage.ph/",
-                        "webview_height_ratio": "tall"
-                    },
-                    {
-                        "type": "web_url",
-                        "title": "Shop now3",
-                        "url": "https://www.coverage.ph/",
-                        "webview_height_ratio": "full"
-                    },
-                    {
-                        "type": "postback",
-                        "title": "postback yes",
-                        "payload": "yes",
+                //     {
+                //         "type": "web_url",
+                //         "title": "Shop now2",
+                //         "url": "https://www.coverage.ph/",
+                //         "webview_height_ratio": "tall"
+                //     },
+                //     {
+                //         "type": "web_url",
+                //         "title": "Shop now3",
+                //         "url": "https://www.coverage.ph/",
+                //         "webview_height_ratio": "full"
+                //     },
+                //     {
+                //         "type": "postback",
+                //         "title": "postback yes",
+                //         "payload": "yes",
 
-                    }
-                ]
+                //     }
+                // ]
             }
         ],
         "whitelisted_domains": [
-            "https://www.coverage.ph/", //link to your Heroku app
+           // "https://www.coverage.ph/", //link to your Heroku app
             "https://www.mestemplate.herokuapp.com/",
         ]
     };
