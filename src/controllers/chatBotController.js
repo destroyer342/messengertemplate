@@ -285,7 +285,7 @@ let callQuickReply = (sender_psid) => {
               "payload":{
                 "template_type":"receipt",
                 "recipient_name":"Stephane Crozatier",
-                "order_number":"1234567a8222902",
+                "order_number":"12345622902",
                 "currency":"USD",
                 "payment_method":"Visa 2345",        
                 "order_url":"http://originalcoastclothing.com/order?order_id=123456",
